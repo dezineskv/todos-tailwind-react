@@ -1,70 +1,28 @@
-import React, { useState } from 'react'
-import './App.css'
+import React, { createContext, useState } from "react";
+import Header from "./components/Header";
+import { Main } from "./components/Main";
+import './App.css';
+import Sidebar from "./components/Sidebar";
 
-function App() {
-  const [tasks, setTask] = useState([])
+export const TodosContext = createContext();
 
-  const newTasks = [
+const App = () => {
+  const [tasks, setTasks] = useState([
     {
-        id: 1,
-        name: "new tasks"
+      id: 1,
+      name: "saved task",
     },
-    {
-        id: 2,
-        name: "new tasks2"
-    }
-]
-const handleSubmit = (e) =>{
-  e.preventDefault();
-  
-  newTasks.push({
-      id: "new",
-      name: {tasks}
-  })
-  setTask(tasks);
-  console.log(newTasks);
-  console.log(tasks)
-}
-return (
-<>    
-<div className="home-page">
-<h1>Todos</h1>
-      
-    
-      <p className="read-the-docs">
-        Agenda Tracker
-      </p>
-      <input 
-            type="text" 
-            placeholder="enter today's task"
-            onChange={(e)=>{
-                console.log(e.target.value);
-                setTask(e.target.value);
-            }}
-            value={tasks.name}
-                ></input>   
-                <div className="card">
-        <p>
-          Today's Agenda: {tasks}
-        </p>
+  ]);
+
+  return (
+    <TodosContext.Provider value={[tasks, setTasks]}>
+      <Header></Header>
+      <div className="home">
+        <Sidebar></Sidebar>
+        <Main></Main>
       </div>
-        <div className="mt-10"><br/>
-            <button onClick={handleSubmit}>Save to Agenda</button>
-        </div>
-      <h5 className="">Existing Agenda</h5>
-        <div className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-    {newTasks?.map((task)=> (     
-        <p key={task.id}
-        >task is {task.name}</p>
-        ))}
-        </div> 
-        <p>{tasks}</p>
+    </TodosContext.Provider>
+  );
+};
 
-  </div>
-</>
- 
-
-  )
-}
-
-export default App
+export default App;
