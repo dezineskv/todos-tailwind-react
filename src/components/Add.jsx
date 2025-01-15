@@ -1,10 +1,27 @@
 import React, { useContext, useState } from "react";
 import { TodosContext } from "../App";
+import { TfiTimer } from "react-icons/tfi";
+import {
+  TfiAgenda,
+  TfiAlarmClock,
+  TfiCalendar,
+  TfiListOl,
+  TfiLayoutListThumbAlt,
+  TfiPlus,
+  TfiSearch,
+  TfiClip,
+} from "react-icons/tfi";
+import Dates from './Dates';
 
-export const Main = () => {
+function Main() {
   const [tasks, setTasks] = useContext(TodosContext);
   const [input, setInput] = useState("");
   console.log(tasks);
+
+  const currentDate = new Date();
+  const formatDate = currentDate.toLocaleDateString("en-US", {
+    timeZoneName: "short",
+  });
 
   const handleSubmit = () => {
     setTasks((prev) => [
@@ -12,18 +29,16 @@ export const Main = () => {
       {
         id: tasks.length + 1,
         name: input,
+        date: `${formatDate}`,
+        status: "Not completed",
+        isCompleted: false,
       },
     ]);
     setInput("");
   };
   return (
     <div className="bg-slate-950 home-page">
-        <h3>Tasks</h3>
-      <div>
-        {tasks.map((task) => (
-          <p key={task.id}>{task.name}</p>
-        ))}
-      </div>
+      <TfiPlus style={{ marginTop: "4px" }} /> &nbsp;&nbsp;<h3>ADD TASKS</h3>
       <input
         className="border"
         value={input}
@@ -38,6 +53,10 @@ export const Main = () => {
           Save to Agenda
         </button>
       </div>
+      <div className="home-page"></div>
+      <Dates />
     </div>
   );
-};
+}
+
+export default Main;
