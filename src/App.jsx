@@ -22,12 +22,13 @@ const App = () => {
     {
       id: 1,
       name: "Saved Task",
+      tDate: formatDate,
       date: formatDate,
-      dueDate: "choose date",
       status: "Not completed",
       isCompleted: false,
     },
   ]);
+  const [startDate, setStartDate] = useState(new Date());
 
   return (
     <TodosContext.Provider value={[tasks, setTasks]}>

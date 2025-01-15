@@ -11,31 +11,40 @@ import {
   TfiSearch,
   TfiClip,
 } from "react-icons/tfi";
-import Dates from './Dates';
+// import Dates from './Dates';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-function Main() {
+function Add () {
   const [tasks, setTasks] = useContext(TodosContext);
   const [input, setInput] = useState("");
   console.log(tasks);
+
+  const date = new Date();
+  const due = date.toLocaleDateString("en-US", {
+    timeZoneName: "short",
+  });
+  const [startDate, setStartDate] = useState("");
 
   const currentDate = new Date();
   const formatDate = currentDate.toLocaleDateString("en-US", {
     timeZoneName: "short",
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (date) => {
     setTasks((prev) => [
       ...prev,
       {
         id: tasks.length + 1,
         name: input,
-        date: `${formatDate}`,
-        dueDate: 'choose date',
+        tDate: `${formatDate}`,
+        date: due,
         status: "Not completed",
         isCompleted: false,
       },
     ]);
     setInput("");
+    setStartDate(startDate);
   };
   return (
     <div className="bg-slate-950 home-page">
@@ -46,7 +55,16 @@ function Main() {
         onChange={(e) => setInput(e.target.value)}
         type="text"
       ></input>
-      <div className="buttonCont">
+      <div className="">
+        <DatePicker
+          selected={startDate}
+          value={startDate}
+          onChange={(date) => setStartDate(date)}
+          showTimeSelect
+          dateFormat="Pp"
+        />
+      </div>
+      <div className="buttonCont pt-5">
         <button
           className="bg-transparent hover:bg-slate-500 text-slate-500 font-semibold hover:text-white py-2 px-4 border border-blue-550 hover:border-transparent rounded"
           onClick={handleSubmit}
@@ -54,10 +72,8 @@ function Main() {
           Save to Agenda
         </button>
       </div>
-      <div className="home-page"></div>
-      <Dates />
     </div>
   );
 }
 
-export default Main;
+export default Add;

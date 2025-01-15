@@ -14,15 +14,17 @@ import {
   TfiTimer,
 } from "react-icons/tfi";
 
-function Status() {
+function Status({date}) {
   const [tasks, setTasks] = useContext(TodosContext);
   const [input, setInput] = useState("");
   console.log(tasks);
+  const [startDate, setStartDate] = useState("");
 
   const currentDate = new Date();
   const formatDate = currentDate.toLocaleDateString("en-US", {
     timeZoneName: "short",
   });
+  
 
   return (
     <div className="bg-slate-950 home-page">
@@ -35,9 +37,9 @@ function Status() {
               <div style={{ fontWeight: "bold" }}>Name: {task.name}</div>
               <div>
                 <TfiCalendar />
-                Date added: {task.date}
+                Date added: {task.tDate}
               </div>
-              <br /> Due Date: {task.dueDate}
+              <br /> Due Date: {task.date}
               <TfiClip />
               Status: {task.status}
             </div>
