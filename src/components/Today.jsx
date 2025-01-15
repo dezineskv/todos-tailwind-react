@@ -21,16 +21,19 @@ function Today() {
   return (
     <div className="bg-slate-950 home-page">
       <h3>TODAY'S TASKS</h3>
-      <div className="pt-30 pb-5 mt-10 mb-10 border-b">
+      <div className="">
         {tasks.map((task) => (
           <p key={task.id}>
-            <TfiTimer /> <div style={{ fontWeight: "bold" }}>{task.name}</div>
+                        <div className="pt-5 pb-5 border-b">
+
+            <TfiTimer /> <div style={{ fontWeight: "bold" }}>Name: {task.name}</div>
             <div>
-              <TfiCalendar /> {task.date}
+              <TfiCalendar />Date added: {task.date}
             </div>
+            <br/> Due Date: {task.dueDate}
             <TfiClip />
-            {task.status}
-            <br />
+            Status: {task.status}
+            </div>
           </p>
         ))}
       </div>

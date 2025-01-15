@@ -30,6 +30,7 @@ function Main() {
         id: tasks.length + 1,
         name: input,
         date: `${formatDate}`,
+        dueDate: 'choose date',
         status: "Not completed",
         isCompleted: false,
       },

@@ -11,6 +11,7 @@ import {
   TfiPencil,
   TfiTrash,
   TfiClip,
+  TfiTimer,
 } from "react-icons/tfi";
 
 function Status() {
@@ -26,17 +27,20 @@ function Status() {
   return (
     <div className="bg-slate-950 home-page">
       <h3>TASKS BY STATUS</h3>
-      <div className="pt-30 pb-5 mt-10 mb-10 border-b">
+      <div className="">
         {tasks.map((task) => (
           <p key={task.id}>
-            <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
-            <div style={{ fontWeight: "bold" }}>{task.name}</div>
-
-            <div>
-              <TfiCalendar /> {task.date}
+            <div className="pt-5 pb-5 border-b">
+              <TfiTimer />
+              <div style={{ fontWeight: "bold" }}>Name: {task.name}</div>
+              <div>
+                <TfiCalendar />
+                Date added: {task.date}
+              </div>
+              <br /> Due Date: {task.dueDate}
+              <TfiClip />
+              Status: {task.status}
             </div>
-            <TfiClip />
-            {task.status}
           </p>
         ))}
       </div>

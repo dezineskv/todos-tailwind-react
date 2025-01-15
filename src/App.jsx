@@ -23,7 +23,8 @@ const App = () => {
       id: 1,
       name: "Saved Task",
       date: formatDate,
-      status: 'Not completed',
+      dueDate: "choose date",
+      status: "Not completed",
       isCompleted: false,
     },
   ]);
