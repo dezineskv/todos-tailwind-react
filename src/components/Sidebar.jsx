@@ -1,8 +1,6 @@
 import { useState, useContext } from "react";
 import {
-  TfiAgenda,
   TfiAlarmClock,
-  TfiCalendar,
   TfiListOl,
   TfiLayoutListThumbAlt,
   TfiPlus,
@@ -16,7 +14,6 @@ function Sidebar() {
   const [all, setAll] = useState("all");
   // console.log("all:", all)
   // const [today, SetToday] = useState("today");
-
   // const getTodos = useContext(TodosContext);
 
   return (

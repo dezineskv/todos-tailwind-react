@@ -1,13 +1,7 @@
 import React, { useContext, useState } from "react";
 import { TodosContext } from "../App";
 import {
-  TfiAgenda,
-  TfiAlarmClock,
   TfiCalendar,
-  TfiListOl,
-  TfiLayoutListThumbAlt,
-  TfiPlus,
-  TfiSearch,
   TfiPencil,
   TfiTrash,
   TfiClip,

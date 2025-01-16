@@ -18,6 +18,8 @@ const formatDate = currentDate.toLocaleDateString("en-US", {
 });
 
 const App = () => {
+    const [startDate, setStartDate] = useState();
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -28,7 +30,6 @@ const App = () => {
       isCompleted: false,
     },
   ]);
-  const [startDate, setStartDate] = useState(new Date());
 
   return (
     <TodosContext.Provider value={[tasks, setTasks]}>
