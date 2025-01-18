@@ -8,11 +8,12 @@ import {
   TfiClip,
 } from "react-icons/tfi";
 
-function Today({ date }) {
-  const [tasks, setTasks] = useContext(TodosContext);
-  const [input, setInput] = useState("");
+function Today({ tasks, setTasks }) {
+  // const [tasks, setTasks] = useContext(TodosContext);
+
   console.log(tasks);
   const [startDate, setStartDate] = useState("");
+  const [name, setName] = useState("");
 
   return (
     <div className="bg-slate-950 home-page">

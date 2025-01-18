@@ -8,17 +8,17 @@ import {
   TfiTimer,
 } from "react-icons/tfi";
 
-function Status({date}) {
-  const [tasks, setTasks] = useContext(TodosContext);
-  const [input, setInput] = useState("");
+function Status({ tasks, setTasks }) {
+  // const [tasks, setTasks] = useContext(TodosContext);
+
   console.log(tasks);
   const [startDate, setStartDate] = useState("");
+  const [name, setName] = useState("");
 
   const currentDate = new Date();
   const formatDate = currentDate.toLocaleDateString("en-US", {
     timeZoneName: "short",
   });
-  
 
   return (
     <div className="bg-slate-950 home-page">

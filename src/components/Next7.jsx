@@ -8,16 +8,17 @@ import {
   TfiClip,
 } from "react-icons/tfi";
 
-function Next7({ date }) {
-  const [tasks, setTasks] = useContext(TodosContext);
-  const [input, setInput] = useState("");
+function Next7({ tasks, setTasks }) {
+  // const [tasks, setTasks] = useContext(TodosContext);
+
   console.log(tasks);
   const [startDate, setStartDate] = useState("");
+  const [name, setName] = useState("");
 
-  const currentDate = new Date();
-  const formatDate = currentDate.toLocaleDateString("en-US", {
-    timeZoneName: "short",
-  });
+  // const currentDate = new Date();
+  // const formatDate = currentDate.toLocaleDateString("en-US", {
+  //   timeZoneName: "short",
+  // });
 
   return (
     <div className="bg-slate-950 home-page">
@@ -28,8 +29,7 @@ function Next7({ date }) {
             <div className="pt-5 pb-5 border-b">
               <TfiTimer />
               <div style={{ fontWeight: "bold" }}>Name: {task.name}</div>
-              <div>
-                <TfiCalendar />
+              <div><TfiCalendar />
                 Date added: {task.tDate}
               </div>
               <br /> Due Date: {task.date}
