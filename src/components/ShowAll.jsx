@@ -8,22 +8,28 @@ import {
   TfiClip,
 } from "react-icons/tfi";
 
-function Today() {
+function showAll() {
   const [tasks, setTasks] = useContext(TodosContext);
 
   console.log(tasks);
   const [startDate, setStartDate] = useState("");
   const [name, setName] = useState("");
 
+  // const currentDate = new Date();
+  // const formatDate = currentDate.toLocaleDateString("en-US", {
+  //   timeZoneName: "short",
+  // });
+
   return (
     <div className="bg-slate-950 home-page">
-      <h3>TODAY'S TASKS</h3>
+      <h3>All TASKS</h3>
+      <p>Number of tasks: {tasks.length}</p>
       <div className="">
         {tasks.map((task) => (
           <p key={task.id}>
             <div className="pt-5 pb-5 border-b">
-              <TfiTimer />{" "}
-              <div style={{ fontWeight: "bold" }}>Name: {task.name}</div>
+              <TfiTimer />
+              <div style={{ fontWeight: "bold" }}>Task: {task.name}</div>
               <div>
                 <TfiCalendar />
                 Date added: {task.tDate}
@@ -35,12 +41,9 @@ function Today() {
           </p>
         ))}
       </div>
-      <div>
-        <TfiPencil />
-        Edit <TfiTrash /> Delete
-      </div>
+      <div></div>
     </div>
   );
 }
 
-export default Today;
+export default showAll;

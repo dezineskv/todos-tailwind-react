@@ -5,6 +5,7 @@ import {
   TfiLayoutListThumbAlt,
   TfiPlus,
   TfiSearch,
+  TfiPencil,
 } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { TodosContext } from "../App";
@@ -55,9 +56,9 @@ function Sidebar() {
           </Link>
         </div>
         <div className="task-icons">
-          <Link to="/all">
+          <Link to="/edit">
             <h4 className="sidebar-w pt-4">
-              <TfiListOl style={{ marginTop: "4px" }} /> &nbsp;&nbsp;Show All
+              <TfiPencil style={{ marginTop: "4px" }} /> &nbsp;&nbsp;Edit Task
             </h4>
           </Link>
         </div>
@@ -66,6 +67,14 @@ function Sidebar() {
             <div className="sidebar-w pt-4">
               <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
               &nbsp;&nbsp;Status
+            </div>
+          </Link>
+        </div>
+        <div className="task-icons">
+          <Link to="/show-all">
+            <div className="sidebar-w pt-4">
+              <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
+              &nbsp;&nbsp;All Tasks
             </div>
           </Link>
         </div>

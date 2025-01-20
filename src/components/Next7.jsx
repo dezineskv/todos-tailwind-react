@@ -8,8 +8,8 @@ import {
   TfiClip,
 } from "react-icons/tfi";
 
-function Next7({ tasks, setTasks }) {
-  // const [tasks, setTasks] = useContext(TodosContext);
+function Next7() {
+  const [tasks, setTasks] = useContext(TodosContext);
 
   console.log(tasks);
   const [startDate, setStartDate] = useState("");

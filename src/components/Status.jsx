@@ -8,8 +8,8 @@ import {
   TfiTimer,
 } from "react-icons/tfi";
 
-function Status({ tasks, setTasks }) {
-  // const [tasks, setTasks] = useContext(TodosContext);
+function Status() {
+  const [tasks, setTasks] = useContext(TodosContext);
 
   console.log(tasks);
   const [startDate, setStartDate] = useState("");
