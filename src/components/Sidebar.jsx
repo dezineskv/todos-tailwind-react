@@ -58,7 +58,7 @@ function Sidebar() {
         <div className="task-icons">
           <Link to="/edit">
             <h4 className="sidebar-w pt-4">
-              <TfiPencil style={{ marginTop: "4px" }} /> &nbsp;&nbsp;Edit Task
+              <TfiPencil style={{ marginTop: "4px" }} /> &nbsp;&nbsp;All Tasks
             </h4>
           </Link>
         </div>
@@ -70,14 +70,14 @@ function Sidebar() {
             </div>
           </Link>
         </div>
-        <div className="task-icons">
+        {/* <div className="task-icons">
           <Link to="/show-all">
             <div className="sidebar-w pt-4">
               <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
               &nbsp;&nbsp;All Tasks
             </div>
           </Link>
-        </div>
+        </div> */}
         {/* <All></All> */}
         {/* <div className="home-page">
             {

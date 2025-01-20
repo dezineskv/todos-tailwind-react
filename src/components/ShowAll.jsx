@@ -7,6 +7,7 @@ import {
   TfiTrash,
   TfiClip,
 } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
 function showAll() {
   const [tasks, setTasks] = useContext(TodosContext);
@@ -24,10 +25,10 @@ function showAll() {
     <div className="bg-slate-950 home-page">
       <h3>All TASKS</h3>
       <p>Number of tasks: {tasks.length}</p>
-      <div className="">
+      <div className="items-list">
         {tasks.map((task) => (
           <p key={task.id}>
-            <div className="pt-5 pb-5 border-b">
+            <div className="pt-5 pb-5">
               <TfiTimer />
               <div style={{ fontWeight: "bold" }}>Task: {task.name}</div>
               <div>
@@ -36,7 +37,17 @@ function showAll() {
               </div>
               <br /> Due Date: {task.date}
               <TfiClip />
-              Status: {task.status}
+              Status: {task.checked}
+              <br></br>
+              <div>
+                <Link to="/edit">
+                  <TfiPencil />
+                  EDIT
+                </Link>
+                <Link to="/edit">
+                  <TfiTrash /> &nbsp; &nbsp; DELETE
+                </Link>
+              </div>
             </div>
           </p>
         ))}

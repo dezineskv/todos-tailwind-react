@@ -11,8 +11,9 @@ import Status from "./components/Status";
 import Next7 from "./components/Next7";
 import Sidebar from "./components/Sidebar";
 import EditTask from "./components/EditTask";
-
+import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
 export const TodosContext = createContext();
+import { TfiCheck, TfiAlert } from "react-icons/tfi";
 
 const currentDate = new Date();
 const formatDate = currentDate.toLocaleDateString("en-US", {
@@ -22,15 +23,17 @@ const formatDate = currentDate.toLocaleDateString("en-US", {
 const App = () => {
   const [startDate, setStartDate] = useState();
   const [name, setName] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [todayTodo, setTodayTodo] = useState([]);
   const [tasks, setTasks] = useState([
     {
       id: 1,
       name: "Task name",
       tDate: formatDate,
       date: formatDate,
-      status: "Not completed",
-      isCompleted: false,
       checked: false,
+      // isCompleted: false,
+      // checked: false,
     },
   ]);
 
@@ -42,22 +45,34 @@ const App = () => {
           <Sidebar></Sidebar>
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/add" element={<Add />}></Route>
+            <Route
+              path="/add"
+              element={<Add tasks={tasks} setTasks={setTasks} />}
+            ></Route>
             <Route
               path="/today"
-              element={<Today tasks={tasks}></Today>}
+              element={<Today tasks={tasks} setTasks={setTasks}></Today>}
             ></Route>
             <Route
               path="/next7"
-              element={<Next7 tasks={tasks}></Next7>}
+              element={<Next7 tasks={tasks} setTasks={setTasks}></Next7>}
             ></Route>
-            <Route path="/edit" element={<All tasks={tasks}></All>}></Route>
-            <Route path="/status" element={<Status></Status>}></Route>
+            <Route
+              path="/edit"
+              element={<All tasks={tasks} setTasks={setTasks}></All>}
+            ></Route>
+            <Route
+              path="/status"
+              element={<Status tasks={tasks} setTasks={setTasks}></Status>}
+            ></Route>
             <Route
               path="/task"
-              element={<EditTask tasks={tasks}></EditTask>}
+              element={<EditTask tasks={tasks} setTasks={setTasks}></EditTask>}
             ></Route>
-            <Route path="/show-all" element={<ShowAll></ShowAll>}></Route>
+            {/* <Route
+              path="/show-all"
+              element={<ShowAll tasks={tasks}></ShowAll>}
+            ></Route> */}
           </Routes>
         </div>
       </>

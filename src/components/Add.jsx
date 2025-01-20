@@ -1,27 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
-import { TfiTimer } from "react-icons/tfi";
-import { TfiPlus } from "react-icons/tfi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
+import {
+  TfiCalendar,
+  TfiTimer,
+  TfiPencil,
+  TfiTrash,
+  TfiClip,
+  TfiCheck,
+  TfiAlert,
+  TfiPlus,
+} from "react-icons/tfi";
 
 function Add() {
   const [tasks, setTasks] = useContext(TodosContext);
   const [date, setDate] = useState("");
   const [dateValue, setDateValue] = useState("");
+  const [checked, setChecked] = useState(false);
 
   const currentDate = new Date();
   const formatDate = currentDate.toLocaleDateString("en-US", {
     timeZoneName: "short",
   });
-  
+
   useEffect(() => {
-    setDateValue(moment(date).format("MM-DD-YYYY"));
+    setDateValue(moment(date).format("MM/DD/YYYY"));
   }, [date, setDateValue]);
 
   const [name, setName] = useState("");
-  console.log(moment(date, "MM-DD-YYYY"));
+  console.log(moment(date, "MM/DD/YYYY"));
   const [err, setErr] = useState("");
 
   const handleSubmit = (e) => {
@@ -33,11 +43,13 @@ function Add() {
         name: name,
         tDate: `${formatDate}`,
         date: dateValue,
-        status: "Not completed",
-        isCompleted: false,
+        checked: true,
+        // isCompleted: false,
+        // checked: false,
       },
     ]);
     // setName("");
+    // setCheck(false);
     console.log("new tasks:", tasks);
     // setStartDate("");
   };
@@ -56,13 +68,7 @@ function Add() {
         <div className="">
           <label htmlFor="date">Due Date:</label>
           <br></br>
-          <DatePicker
-            selected={date}
-            // value={startDate}
-            onChange={(date) => setDate(date)}
-            // showTimeSelect
-            // dateFormat="Pp"
-          />
+          <DatePicker selected={date} onChange={(date) => setDate(date)} />
         </div>
         <div className="buttonCont pt-5">
           <button

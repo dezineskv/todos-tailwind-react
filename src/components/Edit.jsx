@@ -7,9 +7,10 @@ import {
   TfiClip,
   TfiTimer,
 } from "react-icons/tfi";
+import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
 import EditTask from "./EditTask";
 
-function Edit({tasks, setTasks}) {
+function Edit({ tasks, setTasks }) {
   // const [tasks, setTasks] = useContext(TodosContext);
   // const [tasks, setTasks] = useState("");
 
@@ -18,8 +19,8 @@ function Edit({tasks, setTasks}) {
   return (
     <>
       <div className="bg-slate-950 home-page">
-        <h3>EDIT TASKS:</h3>
-        <p>Number of tasks: {tasks.length}</p>
+        <h3>ALL TASKS</h3>
+        <p>Total tasks: {tasks.length}</p>
         {
           tasks?.map((task) => (
             <EditTask task={task} setTask={setTasks}></EditTask>

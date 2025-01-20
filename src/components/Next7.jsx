@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
 import {
   TfiCalendar,
@@ -6,42 +6,34 @@ import {
   TfiPencil,
   TfiTrash,
   TfiClip,
+  TfiCheck,
+  TfiAlert,
 } from "react-icons/tfi";
+import { Link } from "react-router-dom";
+import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
+import EditTask from "./EditTask";
+import moment from "moment";
 
 function Next7() {
   const [tasks, setTasks] = useContext(TodosContext);
+  const [seven, setSeven] = useState([]);
 
-  console.log(tasks);
-  const [startDate, setStartDate] = useState("");
-  const [name, setName] = useState("");
+  var date = new Date();
+  date.setDate(date.getDate() + 7);
+  const sevenDates = moment(date).format("MM/DD/YYYY");
+  console.log(sevenDates);
 
-  // const currentDate = new Date();
-  // const formatDate = currentDate.toLocaleDateString("en-US", {
-  //   timeZoneName: "short",
-  // });
+  useEffect(() => {
+    setSeven(tasks.filter((sevs) => sevs.date <= sevenDates));
+  }, [tasks]);
 
   return (
     <div className="bg-slate-950 home-page">
       <h3>NEXT 7 DAYS TASKS</h3>
-      <div className="">
-        {tasks.map((task) => (
-          <p key={task.id}>
-            <div className="pt-5 pb-5 border-b">
-              <TfiTimer />
-              <div style={{ fontWeight: "bold" }}>Name: {task.name}</div>
-              <div><TfiCalendar />
-                Date added: {task.tDate}
-              </div>
-              <br /> Due Date: {task.date}
-              <TfiClip />
-              Status: {task.status}
-            </div>
-          </p>
+      <div className="items-list">
+        {seven.map((task) => (
+          <EditTask task={task}></EditTask>
         ))}
-      </div>
-      <div>
-        <TfiPencil />
-        Edit <TfiTrash /> Delete
       </div>
     </div>
   );
