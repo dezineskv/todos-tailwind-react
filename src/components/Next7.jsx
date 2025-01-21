@@ -21,7 +21,6 @@ function Next7() {
   var date = new Date();
   date.setDate(date.getDate() + 7);
   const sevenDates = moment(date).format("MM/DD/YYYY");
-  console.log(sevenDates);
 
   useEffect(() => {
     setSeven(tasks.filter((sevs) => sevs.date <= sevenDates));
@@ -30,11 +29,15 @@ function Next7() {
   return (
     <div className="bg-slate-950 home-page">
       <h3>NEXT 7 DAYS TASKS</h3>
-      <div className="items-list">
+      {
+        seven.length >0 ? <div className="items-list">
         {seven.map((task) => (
           <EditTask task={task}></EditTask>
         ))}
-      </div>
+      </div> : <div>No tasks due this week</div>
+
+      }
+     
     </div>
   );
 }

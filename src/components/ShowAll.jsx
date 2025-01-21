@@ -11,15 +11,8 @@ import { Link } from "react-router-dom";
 
 function showAll() {
   const [tasks, setTasks] = useContext(TodosContext);
-
-  console.log(tasks);
   const [startDate, setStartDate] = useState("");
   const [name, setName] = useState("");
-
-  // const currentDate = new Date();
-  // const formatDate = currentDate.toLocaleDateString("en-US", {
-  //   timeZoneName: "short",
-  // });
 
   return (
     <div className="bg-slate-950 home-page">

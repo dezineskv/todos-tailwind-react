@@ -11,11 +11,6 @@ import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
 import EditTask from "./EditTask";
 
 function Edit({ tasks, setTasks }) {
-  // const [tasks, setTasks] = useContext(TodosContext);
-  // const [tasks, setTasks] = useState("");
-
-  console.log(tasks);
-
   return (
     <>
       <div className="bg-slate-950 home-page">

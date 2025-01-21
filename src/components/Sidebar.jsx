@@ -13,9 +13,6 @@ import { RiH5 } from "react-icons/ri";
 
 function Sidebar() {
   const [all, setAll] = useState("all");
-  // console.log("all:", all)
-  // const [today, SetToday] = useState("today");
-  // const getTodos = useContext(TodosContext);
 
   return (
     <>

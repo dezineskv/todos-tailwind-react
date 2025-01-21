@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Add from "./components/Add";
 import Home from "./components/Home";
 import Today from "./components/Today";
-import All from "./components/Edit";
+import Edit from "./components/Edit";
 import ShowAll from "./components/ShowAll";
 import Status from "./components/Status";
 import Next7 from "./components/Next7";
@@ -28,12 +28,11 @@ const App = () => {
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      name: "Task name",
+      name: name,
       tDate: formatDate,
       date: formatDate,
       checked: false,
       // isCompleted: false,
-      // checked: false,
     },
   ]);
 
@@ -59,16 +58,16 @@ const App = () => {
             ></Route>
             <Route
               path="/edit"
-              element={<All tasks={tasks} setTasks={setTasks}></All>}
+              element={<Edit tasks={tasks} setTasks={setTasks}></Edit>}
             ></Route>
             <Route
               path="/status"
               element={<Status tasks={tasks} setTasks={setTasks}></Status>}
             ></Route>
-            <Route
+            {/* <Route
               path="/task"
               element={<EditTask tasks={tasks} setTasks={setTasks}></EditTask>}
-            ></Route>
+            ></Route> */}
             {/* <Route
               path="/show-all"
               element={<ShowAll tasks={tasks}></ShowAll>}

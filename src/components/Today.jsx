@@ -16,7 +16,6 @@ import EditTask from "./EditTask";
 function Today() {
   const [tasks, setTasks] = useContext(TodosContext);
   const [todayTodo, setTodayTodo] = useState([]);
-  console.log(tasks);
 
   const date = new Date();
   const todayDate = moment(date).format("MM/DD/YYYY");
@@ -28,11 +27,17 @@ function Today() {
   return (
     <div className="bg-slate-950 home-page">
       <h3>TODAY'S TASKS</h3>
-      <div className="items-list">
-        {todayTodo.map((task) => (
-          <EditTask task={task}></EditTask>
-        ))}
-      </div>
+      {todayTodo.length > 0 ? (
+        <div className="items-list">
+          {todayTodo.map((task) => (
+            <EditTask task={task}></EditTask>
+          ))}
+        </div>
+      )
+      :
+        <div>No tasks due today</div>
+      }
+    
     </div>
   );
 }

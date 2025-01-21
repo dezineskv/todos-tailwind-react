@@ -14,6 +14,7 @@ import {
   TfiAlert,
   TfiPlus,
 } from "react-icons/tfi";
+import { FaBullseye } from "react-icons/fa6";
 
 function Add() {
   const [tasks, setTasks] = useContext(TodosContext);
@@ -31,7 +32,6 @@ function Add() {
   }, [date, setDateValue]);
 
   const [name, setName] = useState("");
-  console.log(moment(date, "MM/DD/YYYY"));
   const [err, setErr] = useState("");
 
   const handleSubmit = (e) => {
@@ -43,15 +43,11 @@ function Add() {
         name: name,
         tDate: `${formatDate}`,
         date: dateValue,
-        checked: true,
+        checked: FaBullseye,
         // isCompleted: false,
-        // checked: false,
       },
     ]);
-    // setName("");
-    // setCheck(false);
-    console.log("new tasks:", tasks);
-    // setStartDate("");
+    setName("");
   };
   return (
     <div className="bg-slate-950 home-page">
