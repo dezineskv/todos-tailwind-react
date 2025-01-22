@@ -1,18 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import All from "./Edit";
 import { TodosContext } from "../App";
-import {
-  TfiCalendar,
-  TfiPencil,
-  TfiTrash,
-  TfiClip,
-  TfiTimer,
-  TfiCheck,
-  TfiAlert,
-} from "react-icons/tfi";
-import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
+import { TfiPencil, TfiTrash, TfiTimer } from "react-icons/tfi";
 import "../App.css";
-import SingleTask from "./SingleTask";
 
 function EditTask({ task }) {
   const stored = JSON.parse(localStorage.getItem("name"));
@@ -28,21 +17,6 @@ function EditTask({ task }) {
   const handleDelete = (id) => {
     setTasks(tasks?.filter((task) => task.id !== id));
   };
-  useEffect(() => {
-    localStorage.setItem("name", JSON.stringify(task.name));
-    console.log("name", task.name);
-  }, [name]);
-  // const handleEditName = (e, id) => {
-  //   task.name = e.target.value;
-  //  setTasks(
-  //    tasks?.map((task) => {
-  //      if (task.id === id) {
-  //        return { ...task, name: task.name };
-  //      }
-  //      return task;
-  //    })
-  //  );
-  // };
   const handleChecked = (id) => {
     setTasks(
       tasks?.map((item) => {
@@ -53,48 +27,62 @@ function EditTask({ task }) {
       })
     );
   };
+  // const handleEdit = (id) => {
+  // }
+
+  useEffect(() => {
+    localStorage.setItem("name", JSON.stringify(task.name));
+    console.log("name", task.name);
+  }, [name]);
+
   return (
     <>
       <br></br>
-      <div className="pt-top">
-        {/* {tasks.map((task) => (
-          <SingleTask {...task} key={task.id} />
-        ))} */}
-        <h3>ID: {task.id}</h3>
-        {/* <p className={`task-names ${check === true ? "check" : ""}`}> */}
-        {/* {task?.checked === true ? (
-          <p className="task-names">Task: {task.name}</p>
-        ) : (
-          <p style={{ textDecoration: "none" }}>Task: {task.name}</p>
-        )} */}
-        <p className={`task-names`}>{task.name}</p>
-        <p>Due Date: {task.date}</p>
-        <p>Status: {task.check}</p>
-        <div className="text-center button-container">
-          <button onClick={() => handleChecked(task.id)} className="buttons">
-            Change Status
-          </button>
-          {!task?.checked ? <TfiAlert></TfiAlert> : <TfiCheck></TfiCheck>}
-        </div>
-        <div>
-          <TfiCalendar />
-          Date added: {task.tDate}
-        </div>
-        <br /> Due Date: {task.date}
-        <TfiClip />
-        Status: {task.checked}
-        <br></br>
-        {/* <div className="text-center button-container">
-          <button onClick={() => handleEdit(task.id)} className="buttons">
-            <TfiPencil />
-            Edit Task
-          </button>
-        </div> */}
-        <div className="text-center button-container">
-          <button onClick={() => handleDelete(task.id)} className="buttons">
-            <TfiTrash />
-            Delete Task
-          </button>
+      <div className="grid grid-rows-* grid-flow-col gap-4">
+        <div className="pt-top">
+          <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="px-6 py-4">
+              <div className="mb-2">
+                <h3>ID: {task.id}</h3>
+                <div className="task-cont">
+                  <div className="text-bold task-w">Task: </div>
+                  <div className="task-titles">{task.name}</div>
+                </div>
+                <div className="task-cont">
+                  <div className="text-bold task-w">Due Date: </div>
+                  <div className="task-titles">{task.date}</div>
+                </div>
+                <div className="task-cont">
+                  <div className="text-bold task-w">Status: </div>
+                  <div className="task-titles">{task.checked}</div>
+                </div>
+                <div className="task-cont">
+                  <div className="text-bold task-w">Date Added: </div>
+                  <div className="task-titles">{task.tDate}</div>
+                </div>
+              </div>
+            </div>
+            <div className="px-6 pt-4 pb-2">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <button onClick={() => handleChecked(task.id)} className="btns">
+                  <TfiTimer />
+                  Change Status
+                </button>
+              </span>
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <button onClick={() => handleEdit(task.id)} className="btns">
+                  <TfiPencil />
+                  Delete Task
+                </button>
+              </span>
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <button onClick={() => handleDelete(task.id)} className="btns">
+                  <TfiTrash />
+                  Delete Task
+                </button>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </>

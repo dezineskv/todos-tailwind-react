@@ -1,15 +1,12 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
   TfiAlarmClock,
-  TfiListOl,
   TfiLayoutListThumbAlt,
   TfiPlus,
   TfiSearch,
   TfiPencil,
 } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-import { TodosContext } from "../App";
-import { RiH5 } from "react-icons/ri";
 
 function Sidebar() {
   const [all, setAll] = useState("all");

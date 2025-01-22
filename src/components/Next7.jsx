@@ -1,16 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
-import {
-  TfiCalendar,
-  TfiTimer,
-  TfiPencil,
-  TfiTrash,
-  TfiClip,
-  TfiCheck,
-  TfiAlert,
-} from "react-icons/tfi";
-import { Link } from "react-router-dom";
-import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
 import EditTask from "./EditTask";
 import moment from "moment";
 

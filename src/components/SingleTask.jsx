@@ -1,15 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
-import {
-  TfiCalendar,
-  TfiTimer,
-  TfiPencil,
-  TfiTrash,
-  TfiClip,
-  TfiCheck,
-  TfiAlert,
-} from "react-icons/tfi";
-import { Link } from "react-router-dom";
 import EditTask from "./EditTask";
 
 function SingleTask() {

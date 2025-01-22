@@ -5,7 +5,8 @@
   text-align: center;
   --header: #64748b;
   --side: #213547;
-  --home: #1a1c20;
+  /* --home: #1a1c20; */
+--home: #ffffff;
 }
 
 .header {
@@ -22,6 +23,9 @@
 h1 {
   font-size: 3rem;
 }
+.text-bold {
+  font-weight: 700;
+}
 .home {
   width: 100%;
   display: flex;
@@ -29,7 +33,7 @@ h1 {
 .home-page {
   width: 78%;
   padding: 1rem 4rem 1rem 4rem;
-  color: white;
+  color: black;
   background-color: var(--home);
   display: flex;
   flex-direction: column;
@@ -84,6 +88,10 @@ h3 {
   align-items: center;
   justify-content: center;
 }
+.btns {
+  display: flex;
+  padding: 4px;
+}
 .button-container {
   display: flex;
  justify-content: center;
@@ -95,4 +103,11 @@ h3 {
 }
 .task-names {
   text-decoration: line-through;
+}
+.task-cont {
+  display: flex;
+  justify-content: center;
+}
+.task-w {
+  width: 100px;
 }

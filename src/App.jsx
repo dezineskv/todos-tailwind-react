@@ -6,35 +6,14 @@ import Add from "./components/Add";
 import Home from "./components/Home";
 import Today from "./components/Today";
 import Edit from "./components/Edit";
-import ShowAll from "./components/ShowAll";
 import Status from "./components/Status";
 import Next7 from "./components/Next7";
 import Sidebar from "./components/Sidebar";
-import EditTask from "./components/EditTask";
-import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
-export const TodosContext = createContext();
-import { TfiCheck, TfiAlert } from "react-icons/tfi";
 
-const currentDate = new Date();
-const formatDate = currentDate.toLocaleDateString("en-US", {
-  timeZoneName: "short",
-});
+export const TodosContext = createContext();
 
 const App = () => {
-  const [startDate, setStartDate] = useState();
-  const [name, setName] = useState("");
-  const [checked, setChecked] = useState(false);
-  const [todayTodo, setTodayTodo] = useState([]);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      name: name,
-      tDate: formatDate,
-      date: formatDate,
-      checked: false,
-      // isCompleted: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   return (
     <TodosContext.Provider value={[tasks, setTasks]}>
@@ -64,14 +43,6 @@ const App = () => {
               path="/status"
               element={<Status tasks={tasks} setTasks={setTasks}></Status>}
             ></Route>
-            {/* <Route
-              path="/task"
-              element={<EditTask tasks={tasks} setTasks={setTasks}></EditTask>}
-            ></Route> */}
-            {/* <Route
-              path="/show-all"
-              element={<ShowAll tasks={tasks}></ShowAll>}
-            ></Route> */}
           </Routes>
         </div>
       </>
