@@ -5,13 +5,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast("Successfully added!");
-
 function Add() {
   const [tasks, setTasks] = useContext(TodosContext);
   const [date, setDate] = useState("");
   const [dateValue, setDateValue] = useState("");
-  const [checked, setChecked] = useState(false);
+
+    const [todayDate, setTodayDate] = useState("");
+
+  const [name, setName] = useState("");
+  const [err, setErr] = useState("");
 
   const currentDate = new Date();
   const formatDate = currentDate.toLocaleDateString("en-US", {
@@ -19,48 +21,64 @@ function Add() {
   });
 
   useEffect(() => {
-    setDateValue(moment(date).format("MM/DD/YYYY"));
+    setDateValue(moment(date).format("YYYY-MM-DD"));
   }, [date, setDateValue]);
 
-  const [name, setName] = useState("");
-  const [err, setErr] = useState("");
+  useEffect(() => {
+    setTodayDate(moment(currentDate).format("YYYY-MM-DD"));
+  }, [todayDate, setTodayDate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTasks([
-      ...tasks,
-      {
-        id: tasks.length + 1,
-        name: name,
-        tDate: `${formatDate}`,
-        date: dateValue,
-        checked: false,
+    if (name && date) {
+      setTasks([
+        ...tasks,
+        {
+          id: tasks.length + 1,
+          name: name,
+          tDate: todayDate,
+          date: dateValue,
+          checked: false,
+          status: 'pending'
+        },
+      ]);
+      setName("");
+      setDate("");
+      setErr("");
+    } else {
+      setErr("Please provide task name & due date");
+    }
+
+    toast.success("Task successfully added", {
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
       },
-    ]);
-    setName("");
-    setDate("");
+    });
   };
   return (
-    <div className="bg-slate-950 home-page card-cont">
+    <div className="home-page add-form">
       <h3>ADD TASKS</h3>
-      <div className="pt-top">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="pt-top add-form">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-700 w-72">
           <div className="px-6 py-4">
             <div className="mb-2">
               <form onSubmit={handleSubmit}>
                 <input
                   name="name"
-                  placeholder="add task name"
+                  placeholder="Add task name"
                   className="border-cyan-950"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                 />
-                <div className="">
+                <div className="" style={{color: 'white'}}>
                   <label htmlFor="date">Select due date:</label>
                   <br></br>
                   <DatePicker
                     selected={date}
+                    placeholderText="Enter due date"
                     className="border-cyan-950"
                     onChange={(date) => setDate(date)}
                   />
@@ -70,7 +88,6 @@ function Add() {
                     type="submit"
                     className="bg-transparent hover:bg-slate-500 text-slate-500 font-semibold hover:text-white py-2 px-4 border border-blue-550 hover:border-transparent rounded"
                     value="Add"
-                    onClick={notify}
                   >
                     Submit
                   </button>

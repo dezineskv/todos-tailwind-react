@@ -13,6 +13,8 @@ import Sidebar from "./components/Sidebar";
 export const TodosContext = createContext();
 
 const App = () => {
+  const localData = localStorage.getItem("tasks");
+  const data = JSON.parse(localData) || [];
   const [tasks, setTasks] = useState([]);
 
   return (
@@ -23,26 +25,11 @@ const App = () => {
           <Sidebar></Sidebar>
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route
-              path="/add"
-              element={<Add tasks={tasks} setTasks={setTasks} />}
-            ></Route>
-            <Route
-              path="/today"
-              element={<Today tasks={tasks} setTasks={setTasks}></Today>}
-            ></Route>
-            <Route
-              path="/next7"
-              element={<Next7 tasks={tasks} setTasks={setTasks}></Next7>}
-            ></Route>
-            <Route
-              path="/edit"
-              element={<Edit tasks={tasks} setTasks={setTasks}></Edit>}
-            ></Route>
-            <Route
-              path="/status"
-              element={<Status tasks={tasks} setTasks={setTasks}></Status>}
-            ></Route>
+            <Route path="/add" element={<Add />}></Route>
+            <Route path="/today" element={<Today></Today>}></Route>
+            <Route path="/next7" element={<Next7></Next7>}></Route>
+            <Route path="/edit" element={<Edit></Edit>}></Route>
+            <Route path="/status" element={<Status></Status>}></Route>
           </Routes>
         </div>
       </>

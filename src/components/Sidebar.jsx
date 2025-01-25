@@ -14,11 +14,6 @@ function Sidebar() {
   return (
     <>
       <div className="sidebar">
-        {/* {getTodos} */}
-        <Link to="/">
-          <h3 className="sidebar-w pt-4">To-Dos Agenda</h3>
-        </Link>
-        <hr></hr>
         <div className="task-icons">
           <Link to="/add">
             <div className="sidebar-w pt-4">
@@ -26,6 +21,15 @@ function Sidebar() {
             </div>
           </Link>
         </div>
+        <div className="task-icons">
+          <Link to="/edit">
+            <h4 className="sidebar-w pt-4">
+              <TfiPencil style={{ marginTop: "4px" }} /> &nbsp;&nbsp;Update Tasks
+            </h4>
+          </Link>
+        </div>
+        <hr></hr>
+        <h3 className="sidebar-w pt-4">To-Dos Agenda</h3>
         <div className="task-icons">
           <Link to="/today">
             <div className="sidebar-w pt-4">
@@ -35,13 +39,6 @@ function Sidebar() {
           </Link>
         </div>
         <div className="task-icons">
-          {/* <a
-            onClick={(e) => {
-              e.preventDefault();
-              setAll(all);
-            }}
-            href=""
-          > */}
           <Link to="/next7">
             <h4 className="sidebar-w pt-4">
               <TfiSearch style={{ marginTop: "4px" }} />
@@ -50,37 +47,13 @@ function Sidebar() {
           </Link>
         </div>
         <div className="task-icons">
-          <Link to="/edit">
-            <h4 className="sidebar-w pt-4">
-              <TfiPencil style={{ marginTop: "4px" }} /> &nbsp;&nbsp;All Tasks
-            </h4>
-          </Link>
-        </div>
-        <div className="task-icons">
           <Link to="/status">
             <div className="sidebar-w pt-4">
               <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
-              &nbsp;&nbsp;Status
+              &nbsp;&nbsp;ToDo
             </div>
           </Link>
         </div>
-        {/* <div className="task-icons">
-          <Link to="/show-all">
-            <div className="sidebar-w pt-4">
-              <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
-              &nbsp;&nbsp;All Tasks
-            </div>
-          </Link>
-        </div> */}
-        {/* <All></All> */}
-        {/* <div className="home-page">
-            {
-                all === 'all' && <Today></Today>
-            }
-              {
-                all === 'today' && <Today></Today>
-            }
-</div> */}
       </div>
     </>
   );

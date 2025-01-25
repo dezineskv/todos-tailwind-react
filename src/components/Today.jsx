@@ -1,34 +1,54 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
+import { TfiCheckBox } from "react-icons/tfi";
+
 import moment from "moment";
-import EditTask from "./EditTask";
+// import EditTask from "./EditTask";
 
 function Today() {
   const [tasks, setTasks] = useContext(TodosContext);
   const [todayTodo, setTodayTodo] = useState([]);
 
   const date = new Date();
-  const todayDate = moment(date).format("MM/DD/YYYY");
+  const todayDate = moment(date).format("YYYY-MM-DD");
 
   useEffect(() => {
     setTodayTodo(tasks.filter((tds) => tds.date === todayDate));
-  }, [tasks]);
+  }, [tasks, todayDate]);
 
   return (
-    <div className="bg-slate-950 home-page">
-      <h3>TODAY'S TASKS</h3>
-      {todayTodo.length > 0 ? (
-        <div className="items-list">
-          {todayTodo.map((task) => (
-            <EditTask task={task}></EditTask>
-          ))}
-        </div>
-      )
-      :
-        <div>No tasks due today</div>
-      }
-    
-    </div>
+    <>
+      <div className="bg-slate-950 home-page">
+        <h3>TODAY'S TASKS</h3>
+        {todayTodo.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded">
+            {todayTodo.map((task) => (
+              <>
+                <p key={task.id} style={{ color: "white" }}>
+                  Task: {task.name}
+                </p>
+                <p style={{ color: "white" }}>Due Date: {task.date}</p>
+                <p style={{ display: "flex", color: "white" }}>
+                  Status:
+                  {task.checked ? (
+                    <div>
+                      Completed
+                      <div>
+                        <TfiCheckBox></TfiCheckBox>
+                      </div>
+                    </div>
+                  ) : (
+                    "Pending"
+                  )}
+                </p>
+              </>
+            ))}
+          </div>
+        ) : (
+          <div>No tasks due today</div>
+        )}
+      </div>
+    </>
   );
 }
 
