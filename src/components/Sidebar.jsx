@@ -4,7 +4,7 @@ import {
   TfiLayoutListThumbAlt,
   TfiPlus,
   TfiSearch,
-  TfiPencil,
+  TfiPencil, TfiCheck
 } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,16 @@ function Sidebar() {
         <div className="task-icons">
           <Link to="/edit">
             <h4 className="sidebar-w pt-4">
-              <TfiPencil style={{ marginTop: "4px" }} /> &nbsp;&nbsp;Update Tasks
+              <TfiPencil style={{ marginTop: "4px" }} /> &nbsp;&nbsp;Update
+              Tasks
+            </h4>
+          </Link>
+        </div>
+        <div className="task-icons">
+          <Link to="/edit">
+            <h4 className="sidebar-w pt-4">
+              <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
+              &nbsp;&nbsp;All Tasks
             </h4>
           </Link>
         </div>
@@ -49,8 +58,7 @@ function Sidebar() {
         <div className="task-icons">
           <Link to="/status">
             <div className="sidebar-w pt-4">
-              <TfiLayoutListThumbAlt style={{ marginTop: "4px" }} />
-              &nbsp;&nbsp;ToDo
+              <TfiCheck style={{ marginTop: "4px" }} /> &nbsp;&nbsp;ToDo
             </div>
           </Link>
         </div>

@@ -3,6 +3,7 @@ import EditTask from "./EditTask";
 import { TodosContext } from "../App";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 function Edit() {
   const [tasks, setTasks] = useContext(TodosContext);
@@ -41,17 +42,34 @@ function Edit() {
       <div className="home-page">
         <h3>ALL TASKS</h3>
         <p>Total tasks added: {tasks?.length}</p>
-        <div className="mt-4 p-4 rounded" style={{ display: "flex",maxWidth: '1100px',
-    flexWrap: 'wrap'}}>
-          {tasks?.map((task, id) => (
-            <EditTask
-              key={id}
-              task={task}
-              onEditClick={() => handleEditClick(task)}
-              onDelete={(id) => handleDelete(id)}
-            />
-          ))}
-        </div>
+
+        {tasks?.length <= 0 ? (
+          <div>
+            <Link to="/add">
+              <u>Add some</u>
+            </Link>
+          </div>
+        ) : (
+          <div
+            className="mt-4 p-4 rounded"
+            style={{ display: "flex", maxWidth: "1100px", flexWrap: "wrap" }}
+          >
+            <div style={{width: '100%'}}>
+  
+                <Link to="/add">
+                  <u>Add more tasks</u>
+                </Link>
+                      </div>
+            {tasks?.map((task, id) => (
+              <EditTask
+                key={id}
+                task={task}
+                onEditClick={() => handleEditClick(task)}
+                onDelete={(id) => handleDelete(id)}
+              />
+            ))}
+          </div>
+        )}
       </div>
       {isModalOpen && (
         <Modal
