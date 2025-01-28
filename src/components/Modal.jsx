@@ -7,6 +7,7 @@ function Modal({ task, onClose, onSave }) {
   const [taskDate, setTaskDate] = useState(task?.date);
   const [taskChecked, setTaskChecked] = useState(task?.checked);
 
+  // onSave add task properties to the task
   const handleSave = () => {
     onSave({ ...task, name: taskName, date: taskDate, checked: taskChecked });
     toast.success("Task updated sucessfully");

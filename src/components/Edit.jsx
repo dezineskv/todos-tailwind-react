@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 
 function Edit() {
   const [tasks, setTasks] = useContext(TodosContext);
+  
+  // selectedTask will show in the open modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
+  // send the tasks object to local storage (key: 'tasks', value: tasks)
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [setTasks, tasks]);
@@ -20,10 +23,10 @@ function Edit() {
   };
 
   const handleModalClose = () => {
-    setIsModalOpen(false); // Close the modal
     setSelectedTask(null); // Clear the selected task
+    setIsModalOpen(false); // Close the modal
   };
-
+  // the updatedTask will get saved onclick of the save button in the modal then close modal
   const handleSaveTask = (updatedTask) => {
     setTasks(
       tasks.map((task) =>
@@ -32,6 +35,7 @@ function Edit() {
     );
     handleModalClose(); // Close the modal after saving
   };
+  // after filtering the matching id for deletion, the toast message appears
   const handleDelete = (id) => {
     setTasks(tasks?.filter((t) => t.id !== id));
     toast.success("Task Successfully Deleted!");
@@ -42,7 +46,6 @@ function Edit() {
       <div className="home-page">
         <h3>ALL TASKS</h3>
         <p>Total tasks added: {tasks?.length}</p>
-
         {tasks?.length <= 0 ? (
           <div>
             <Link to="/add">
@@ -52,22 +55,20 @@ function Edit() {
         ) : (
           <div
             className="mt-4 p-4 rounded"
-            style={{ display: "flex", maxWidth: "1100px", flexWrap: "wrap" }}
-          >
-            <div style={{width: '100%'}}>
-  
+            style={{ display: "flex", maxWidth: "1100px", flexWrap: "wrap" }}>
+              <div style={{width: '100%'}}>
                 <Link to="/add">
                   <u>Add more tasks</u>
                 </Link>
-                      </div>
-            {tasks?.map((task, id) => (
-              <EditTask
-                key={id}
-                task={task}
-                onEditClick={() => handleEditClick(task)}
-                onDelete={(id) => handleDelete(id)}
-              />
-            ))}
+              </div>
+              {tasks?.map((task, id) => (
+                <EditTask
+                  key={id}
+                  task={task}
+                  onEditClick={() => handleEditClick(task)}
+                  onDelete={(id) => handleDelete(id)}
+                />
+              ))}
           </div>
         )}
       </div>

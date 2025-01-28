@@ -9,7 +9,6 @@ function EditTask({ task, onEditClick, onDelete }) {
           <div className="px-6 py-4">
             <div className="mb-2">
               <h3>ID: {task.id} | Date added: {task.tDate}</h3>
-
               <div className="task-cont">
                 <div className="text-bold task-w">Task: </div>
                 <div className="task-titles">{task.name}</div>

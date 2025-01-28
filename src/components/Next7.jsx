@@ -3,16 +3,17 @@ import { TodosContext } from "../App";
 import { TfiCheckBox } from "react-icons/tfi";
 
 import moment from "moment";
-// import EditTask from "./EditTask";
 
 function Next7() {
   const [tasks, setTasks] = useContext(TodosContext);
   const [seven, setSeven] = useState([]);
 
+  // saving today's date & getting 7 days out from today & format date
   var date = new Date();
   date.setDate(date.getDate() + 7);
   const sevenDates = moment(date).format("YYYY-MM-DD");
-
+  
+  // filtering dates less than/equal to sevenDates var, which is today plus 7
   useEffect(() => {
     setSeven(tasks.filter((sevs) => sevs.date <= sevenDates));
   }, [sevenDates, tasks]);

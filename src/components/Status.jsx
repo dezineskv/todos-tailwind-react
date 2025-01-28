@@ -3,7 +3,6 @@ import { TodosContext } from "../App";
 import { TfiCheckBox } from "react-icons/tfi";
 
 import moment from "moment";
-// import EditTask from "./EditTask";
 
 function Status() {
   const [tasks, setTasks] = useContext(TodosContext);
