@@ -16,7 +16,7 @@ function Next7() {
   // filtering dates less than/equal to sevenDates var, which is today plus 7
   useEffect(() => {
     setSeven(tasks.filter((sevs) => sevs.date <= sevenDates));
-  }, [sevenDates, tasks]);
+  }, [tasks, sevenDates]);
 
   return (
     <>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   TfiAlarmClock,
   TfiLayoutListThumbAlt,
@@ -9,7 +8,6 @@ import {
 import { Link } from "react-router-dom";
 
 function Sidebar() {
-  const [all, setAll] = useState("all");
 
   return (
     <>

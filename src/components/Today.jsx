@@ -1,16 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
 import { TfiCheckBox } from "react-icons/tfi";
-
 import moment from "moment";
 
 function Today() {
   const [tasks, setTasks] = useContext(TodosContext);
   const [todayTodo, setTodayTodo] = useState([]);
 
+  // get today's date, format it & save to a variable
   const date = new Date();
   const todayDate = moment(date).format("YYYY-MM-DD");
-
+  
+  // filter out task dates that match today's date
   useEffect(() => {
     setTodayTodo(tasks.filter((tds) => tds.date === todayDate));
   }, [tasks, todayDate]);

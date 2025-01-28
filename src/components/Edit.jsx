@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 
 function Edit() {
   const [tasks, setTasks] = useContext(TodosContext);
-  
+
   // selectedTask will show in the open modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
-  // send the tasks object to local storage (key: 'tasks', value: tasks)
+  // send the tasks object to local storage (key: 'tasks', value: tasks) referenced in App
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [setTasks, tasks]);

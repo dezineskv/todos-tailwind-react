@@ -1,8 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
-import { TfiCheckBox } from "react-icons/tfi";
-
-import moment from "moment";
 
 function Status() {
   const [tasks, setTasks] = useContext(TodosContext);
