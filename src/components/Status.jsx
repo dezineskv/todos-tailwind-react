@@ -29,7 +29,7 @@ function Status() {
             ))}
           </div>
         ) : (
-          <div>No tasks due today</div>
+          <div>No tasks due</div>
         )}
       </div>
     </>

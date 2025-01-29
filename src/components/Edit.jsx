@@ -55,20 +55,21 @@ function Edit() {
         ) : (
           <div
             className="mt-4 p-4 rounded"
-            style={{ display: "flex", maxWidth: "1100px", flexWrap: "wrap" }}>
-              <div style={{width: '100%'}}>
-                <Link to="/add">
-                  <u>Add more tasks</u>
-                </Link>
-              </div>
-              {tasks?.map((task, id) => (
-                <EditTask
-                  key={id}
-                  task={task}
-                  onEditClick={() => handleEditClick(task)}
-                  onDelete={(id) => handleDelete(id)}
-                />
-              ))}
+            style={{ display: "flex", maxWidth: "1100px", flexWrap: "wrap" }}
+          >
+            <div style={{ width: "100%", textAlign: "center" }}>
+              <Link to="/add">
+                <u>Add more tasks</u>
+              </Link>
+            </div>
+            {tasks?.map((task, id) => (
+              <EditTask
+                key={id}
+                task={task}
+                onEditClick={() => handleEditClick(task)}
+                onDelete={(id) => handleDelete(id)}
+              />
+            ))}
           </div>
         )}
       </div>
