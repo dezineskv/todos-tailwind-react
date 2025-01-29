@@ -4,12 +4,14 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { HashRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
+    <HashRouter>
       <Toaster></Toaster>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
