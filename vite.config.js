@@ -1,13 +1,14 @@
+//vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from "tailwindcss";
 
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
   base: "/todos-tailwind-react/",
-  // css: {
-  //   postcss: {
-  //     plugins: [tailwindcss()],
-  //   },
-  // },
+  plugins: [react()],
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
+  },
 });

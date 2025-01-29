@@ -10,15 +10,15 @@ function Add() {
   const [date, setDate] = useState("");
   const [dateValue, setDateValue] = useState("");
 
-    const [todayDate, setTodayDate] = useState("");
+  const [todayDate, setTodayDate] = useState("");
 
   const [name, setName] = useState("");
   const [err, setErr] = useState("");
 
   const currentDate = new Date();
-  const formatDate = currentDate.toLocaleDateString("en-US", {
-    timeZoneName: "short",
-  });
+  // const formatDate = currentDate.toLocaleDateString("en-US", {
+  //   timeZoneName: "short",
+  // });
 
   useEffect(() => {
     setDateValue(moment(date).format("YYYY-MM-DD"));
