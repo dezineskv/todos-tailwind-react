@@ -23,7 +23,7 @@ function Next7() {
       <div className="bg-slate-950 home-page">
         <h3>THIS WEEK'S TASKS</h3>
         {seven.length > 0 && !seven.checked ? (
-          <div className="flex flex-col  gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded tex-black">
+          <div className="flex flex-col  gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded tex-white">
             {seven.map((task) => (
               <>
                 <p key={task.id}>
