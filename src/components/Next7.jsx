@@ -12,7 +12,7 @@ function Next7() {
   var date = new Date();
   date.setDate(date.getDate() + 7);
   const sevenDates = moment(date).format("YYYY-MM-DD");
-  
+
   // filtering dates less than/equal to sevenDates var, which is today plus 7
   useEffect(() => {
     setSeven(tasks.filter((sevs) => sevs.date <= sevenDates));
@@ -23,22 +23,29 @@ function Next7() {
       <div className="bg-slate-950 home-page">
         <h3>THIS WEEK'S TASKS</h3>
         {seven.length > 0 && !seven.checked ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded">
+          <div className="flex flex-col  gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded tex-black">
             {seven.map((task) => (
               <>
-                <p key={task.id} style={{ color: "white" }}>
-                  Task: {task.name}
+                <p key={task.id}>
+                  <div className="font-bold">Task: </div>
+                  {task.name}
                 </p>
-                <p style={{ color: "white" }}>Due Date: {task.date}</p>
-                <p style={{ display: "flex", color: "white" }}>
-                  Status:
+                <p>
+                  <div className="font-bold">Due Date: </div>
+                  {task.date}
+                </p>
+                <p>
+                  <div className="font-bold">Status: </div>
+
                   {task.checked ? (
-                    <div>Completed<div>
+                    <div>
+                      Completed
+                      <div>
                         <TfiCheckBox></TfiCheckBox>
                       </div>
                     </div>
                   ) : (
-                    "Pending"
+                    " Pending"
                   )}
                 </p>
               </>

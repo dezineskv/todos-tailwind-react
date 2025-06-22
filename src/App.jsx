@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
-import Header from "./components/Header";
+import "./index.css";
+import Nav from "./components/Nav";
 import Add from "./components/Add";
 import Home from "./components/Home";
 import Today from "./components/Today";
@@ -20,9 +20,9 @@ const App = () => {
   return (
     <TodosContext.Provider value={[tasks, setTasks]}>
       <>
-        <Header></Header>
+        <Nav/>
         <div className="home">
-          <Sidebar></Sidebar>
+          <Sidebar/>
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/add" element={<Add />}></Route>
