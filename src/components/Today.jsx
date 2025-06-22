@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
 import { TfiCheckBox } from "react-icons/tfi";
 import moment from "moment";
+import "../index.css";
 
 function Today() {
   const [tasks, setTasks] = useContext(TodosContext);
@@ -21,13 +22,11 @@ function Today() {
       <div className="bg-slate-950 home-page">
         <h3>TODAY'S TASKS</h3>
         {todayTodo.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded text-white">
             {todayTodo.map((task) => (
               <>
-                <p key={task.id} style={{ color: "white" }}>
-                  Task: {task.name}
-                </p>
-                <p style={{ color: "white" }}>Due Date: {task.date}</p>
+                <p key={task.id}>Task: {task.name}</p>
+                <p>Due Date: {task.date}</p>
                 <p className="flex justify-center text-white">
                   Status:
                   {task.checked ? (

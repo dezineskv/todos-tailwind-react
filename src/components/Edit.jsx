@@ -3,6 +3,7 @@ import EditTask from "./EditTask";
 import { TodosContext } from "../App";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
+import "../index.css";
 import { Link } from "react-router-dom";
 
 function Edit() {
@@ -54,10 +55,10 @@ function Edit() {
           </div>
         ) : (
           <div
-            className="mt-4 p-4 rounded"
-            style={{ display: "flex", maxWidth: "1100px", flexWrap: "wrap" }}
+            className="mt-4 p-4 rounded flex flex-wrap justify-center gap-4"
+           
           >
-            <div style={{ width: "100%", textAlign: "center" }}>
+            <div className="w-full text-center">
               <Link to="/add">
                 <u>Add more tasks</u>
               </Link>

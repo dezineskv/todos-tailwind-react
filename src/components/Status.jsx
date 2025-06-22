@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
+import "../index.css";
 
 function Status() {
   const [tasks, setTasks] = useContext(TodosContext);
@@ -14,14 +15,12 @@ function Status() {
       <div className="bg-slate-950 home-page">
         <h3>PENDING TASKS</h3>
         {status.length > 0 || status === false ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center justify-center mt-4 bg-gray-800 p-4 rounded text-white">
             {status.map((task) => (
               <>
-                <p key={task.id} style={{ color: "white" }}>
-                  Task: {task.name}
-                </p>
-                <p style={{ color: "white" }}>Due Date: {task.date}</p>
-                <p style={{ color: "white" }}>
+                <p key={task.id}>Task: {task.name}</p>
+                <p>Due Date: {task.date}</p>
+                <p>
                   Status:&nbsp;
                   {task.checked
                     ? "Completed <TfiCheckBox></TfiCheckBox>"
