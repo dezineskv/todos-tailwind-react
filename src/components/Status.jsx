@@ -22,14 +22,16 @@ function Status() {
                 </p>
                 <p style={{ color: "white" }}>Due Date: {task.date}</p>
                 <p style={{ color: "white" }}>
-                  Status:
-                  {task.checked ? "Completed <TfiCheckBox></TfiCheckBox>" : "Pending"}
+                  Status:&nbsp;
+                  {task.checked
+                    ? "Completed <TfiCheckBox></TfiCheckBox>"
+                    : "Pending"}
                 </p>
               </>
             ))}
           </div>
         ) : (
-          <div>No tasks due</div>
+          "No tasks due"
         )}
       </div>
     </>

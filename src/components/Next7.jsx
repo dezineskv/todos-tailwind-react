@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { TodosContext } from "../App";
 import { TfiCheckBox } from "react-icons/tfi";
-
+import "../index.css";
 import moment from "moment";
 
 function Next7() {
@@ -27,32 +27,48 @@ function Next7() {
             {seven.map((task) => (
               <>
                 <p key={task.id}>
-                  <div className="font-bold">Task: </div>
-                  {task.name}
+                  <div className="font-bold" style={{ color: "white" }}>
+                    Task:
+                  </div>
+                  <div style={{ color: "white" }}>{task.name} </div>
                 </p>
                 <p>
-                  <div className="font-bold">Due Date: </div>
-                  {task.date}
+                  <div className="font-bold" style={{ color: "white" }}>
+                    Due Date:
+                  </div>
+                  <div style={{ color: "white" }}>{task.date} </div>
                 </p>
                 <p>
-                  <div className="font-bold">Status: </div>
+                  <div className="font-bold" style={{ color: "white" }}>
+                    Status:
+                  </div>
 
                   {task.checked ? (
-                    <div>
-                      Completed
-                      <div>
+                    <div
+                      className="flex justify-center items-center text-white"
+                      style={{ color: "white" }}
+                    >
+                      &nbsp;Completed
+                      <div className="pl-2">
                         <TfiCheckBox></TfiCheckBox>
                       </div>
                     </div>
                   ) : (
-                    " Pending"
+                    <div
+                      style={{
+                        borderBottom: "1px solid white",
+                        color: "white",
+                      }}
+                    >
+                      &nbsp;Pending
+                    </div>
                   )}
                 </p>
               </>
             ))}
           </div>
         ) : (
-          <div>No tasks due today</div>
+          "No tasks due this week"
         )}
       </div>
     </>

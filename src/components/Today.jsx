@@ -10,7 +10,7 @@ function Today() {
   // get today's date, format it & save to a variable
   const date = new Date();
   const todayDate = moment(date).format("YYYY-MM-DD");
-  
+
   // filter out task dates that match today's date
   useEffect(() => {
     setTodayTodo(tasks.filter((tds) => tds.date === todayDate));
@@ -28,17 +28,19 @@ function Today() {
                   Task: {task.name}
                 </p>
                 <p style={{ color: "white" }}>Due Date: {task.date}</p>
-                <p style={{ display: "flex", color: "white" }}>
+                <p className="flex justify-center text-white">
                   Status:
                   {task.checked ? (
                     <div>
-                      Completed
+                      &nbsp;Completed
                       <div>
                         <TfiCheckBox></TfiCheckBox>
                       </div>
                     </div>
                   ) : (
-                    "Pending"
+                    <div style={{ borderBottom: "1px solid white" }}>
+                      &nbsp;Pending
+                    </div>
                   )}
                 </p>
               </>

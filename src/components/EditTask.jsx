@@ -8,7 +8,9 @@ function EditTask({ task, onEditClick, onDelete }) {
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
           <div className="px-6 py-4">
             <div className="mb-2">
-              <h3>ID: {task.id} | Date added: {task.tDate}</h3>
+              <h3>
+                ID: {task.id} | Date added: {task.tDate}
+              </h3>
               <div className="task-cont">
                 <div className="text-bold task-w">Task: </div>
                 <div className="task-titles">{task.name}</div>
@@ -29,13 +31,13 @@ function EditTask({ task, onEditClick, onDelete }) {
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
               <button onClick={onEditClick} className="btns">
                 <TfiPencil />
-                Update Task
+                &nbsp;Update Task
               </button>
             </span>
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
               <button onClick={() => onDelete(task.id)} className="btns">
                 <TfiTrash />
-                Delete Task
+                &nbsp;Delete Task
               </button>
             </span>
           </div>
